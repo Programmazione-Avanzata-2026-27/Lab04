@@ -1,17 +1,17 @@
 from lingotto_fiere import LingottoFiere
 
 def menu():
-    print(f'\n--- MENU LINGOTTO FIERE ---')
+    print("\n--- MENU LINGOTTO FIERE ---")
     print("1. Modifica nome del centro fieristico")
     print("2. Carica dati da file")
     print("3. Assegna stand a espositore")
-    print("4. Visualizza elenco espositori")
+    print("4. Elenca espositori")
     print("5. Visualizza stand ordinati per prezzo")
     print("6. Esci")
-
-    return input("Scegli un'opzione >> ")
+    return input("Seleziona un'opzione: ")
 
 def main():
+    # Creazione dell'oggetto fiera iniziale prima di far partire il ciclo
     lingotto = LingottoFiere("Lingotto Fiere")
 
     while True:
@@ -19,7 +19,8 @@ def main():
 
         if scelta == "1":
             nuovo_nome = input("Inserisci il nuovo nome del centro fieristico: ")
-            # TODO: Aggiorna il nome del centro fieristico
+            lingotto.nome = nuovo_nome
+            print(f"Nome aggiornato con successo: {lingotto.nome}")
 
         elif scelta == "2":
             file_path = "dati_lingotto.csv"
@@ -36,7 +37,7 @@ def main():
                 lingotto.assegna_stand_a_espositore(codice_stand, codice_espositore)
                 print("Stand assegnato con successo.")
             except Exception as e:
-                print(f"Errore: {e}")
+                print(e)
 
         elif scelta == "4":
             print("\n--- Elenco espositori ---")
